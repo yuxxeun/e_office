@@ -1,0 +1,50 @@
+.pagination,
+.button,
+.links,
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.pagination {
+  column-gap: 5px;
+  margin-top: 7%;
+}
+.button {
+  border: none;
+}
+.button i {
+  pointer-events: none;
+}
+.button:disabled {
+  color: #b3b3b3;
+  pointer-events: none;
+}
+.button,
+.link {
+  height: 25px;
+  width: 25px;
+  font-size: 12px;
+  color: #666666;
+  background-color: #f2f2f2;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.links {
+  column-gap: 5px;
+}
+.link {
+  font-weight: 400;
+  text-decoration: none;
+}
+.button:hover,
+.link:hover {
+  color: #fff;
+  background: #4070f4;
+}
+.link.active {
+  color: #fff;
+  background: #3C91E6;
+}
