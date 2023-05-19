@@ -38,7 +38,7 @@ Route::get('/surat_izin_observasi_TA', [CreateNaskahController::class, 'surat_iz
 /* Controller Mahasiswa */
 Route::get('/daftar_mahasiswa', [MahasiswaController::class, 'daftar_mahasiswa']);
 Route::post('/daftar_mahasiswa', [MahasiswaController::class, 'store']);
-Route::get('/daftar_mahasiswa-detail/{id}', [MahasiswaController::class, 'show']);
+Route::get('/daftar_mahasiswa-detail/{id}', [MahasiswaController::class, 'show'])->name('mahasiswa.show');
 Route::get('/daftar_mahasiswa-edit', [MahasiswaController::class, 'edit']);
 
 Route::view('/daftar_surat', 'daftar_surat');

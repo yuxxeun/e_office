@@ -34,7 +34,7 @@ class MahasiswaController extends Controller
     public function show($id)
     {
         return view('daftar_mahasiswa-detail', [
-            'data' => Mahasiswa::findOrFail($id),
+            'mahasiswa' => Mahasiswa::findOrFail($id),
         ]);
     }
 

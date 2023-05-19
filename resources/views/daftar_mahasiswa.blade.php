@@ -47,18 +47,18 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <?php $no = 1; ?>
+
                 @foreach ($mahasiswa as $mhs)
                     <tbody>
                         <tr>
-                            <td>{{ $no++ }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $mhs->nama }}</td>
                             <td>{{ $mhs->nim }}</td>
                             <td>{{ $mhs->prodi }}</td>
                             <td>{{ $mhs->j_kel }}</td>
                             <td>
                                 <button class="action" style="background: #3C91E6">
-                                    <a href="{{ url('/daftar_mahasiswa-detail/', $data->id) }}" style="color: inherit">
+                                    <a href="{{ route('mahasiswa.show', $mhs->nim) }}" style="color: inherit">
                                         <i class='bx bxs-detail'></i>
                                         Detail
                                     </a>
