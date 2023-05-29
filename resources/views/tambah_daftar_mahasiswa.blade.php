@@ -33,13 +33,15 @@
                 <label>Program Studi</label>
                 <input type="text" name="prodi" placeholder="Masukkan program studi" required />
             </div>
-            <div class="input-box">
+            <div class="input-box address">
                 <label>Jenis Kelamin</label>
-                <select name="j_kel" id="j_kel" required>
-                    <option value="">Pilih Jenis Kelamin</option>
-                    <option value="laki-laki">Laki-laki</option>
-                    <option value="perempuan">Perempuan</option>
-                </select>
+                <div class="select-box">
+                    <select name="j_kel" id="j_kel">
+                        <option hidden>Pilih Jenis Kelamin</option>
+                        <option value="laki-laki">Laki-laki</option>
+                        <option value="perempuan">Perempuan</option>
+                    </select>
+                </div>
             </div>
             <div class="button">
                 <button>Submit</button>

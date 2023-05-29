@@ -6,6 +6,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CobaController;
 use App\http\Controllers\CreateNaskahController;
 use App\http\Controllers\MahasiswaController;
+use App\http\Controllers\WordController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /* Controller Coba */
@@ -54,6 +55,14 @@ Route::view('/tambah_daftar_mahasiswa', 'tambah_daftar_mahasiswa');
 
 Route::view('/tambah_data', 'layouts.tambah_data');
 Route::view('/daftar_tabel', 'layouts.daftar_table');
+
+
+Route::get('/word', function () {
+    return view('word');
+});
+Route::post('/word', [WordController::class, 'tes'])->name('word.tes');
+
+
 
 /*Route::get('/test-koneksi-database', function () {
     try {

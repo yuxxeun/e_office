@@ -1,25 +1,25 @@
-<link rel="stylesheet" href="{{asset('css/suket_mhs_aktif.css')}}">
+<link rel="stylesheet" href="{{ asset('css/suket_mhs_aktif.css') }}">
 
 @extends('layouts.buat_naskah.content_form')
 
 @section('breadcrumb')
-<ul class="breadcrumb">
-    <li>
-        <a href="/buat_naskah">Buat Naskah</a>
-    </li>
-    <li><i class='bx bx-chevron-right'></i></li>
-    <li>
-        <a class="active" href="/suket_mhs_aktif">Surat Keterangan Mahasiswa Aktif</a>
-    </li>
-</ul>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/buat_naskah">Buat Naskah</a>
+        </li>
+        <li><i class='bx bx-chevron-right'></i></li>
+        <li>
+            <a class="active" href="/suket_mhs_aktif">Surat Keterangan Mahasiswa Aktif</a>
+        </li>
+    </ul>
 @endsection
 
 @section('form_input')
-<div class="table-data">
-    <div class="order">
+    <div class="table-data">
+        <div class="order">
         @section('title_surat', 'Keterangan Mahasiswa Aktif')
 
-        <form action="#" class="form">
+        <form method="POST" action="" class="form">
             <div class="input-box">
                 <label>Nama</label>
                 <input type="text" placeholder="Masukkan nama lengkap">
@@ -74,29 +74,29 @@
 @endsection
 
 <!-- jQuery -->
-<script src="{{asset('AdminLTE')}}/plugins/jquery/jquery.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('AdminLTE')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->
-<script src="{{asset('AdminLTE')}}/plugins/select2/js/select2.full.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
-<script src="{{asset('AdminLTE')}}/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->
-<script src="{{asset('AdminLTE')}}/plugins/moment/moment.min.js"></script>
-<script src="{{asset('AdminLTE')}}/plugins/inputmask/jquery.inputmask.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/moment/moment.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/inputmask/jquery.inputmask.min.js"></script>
 <!-- date-range-picker -->
-<script src="{{asset('AdminLTE')}}/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap color picker -->
-<script src="{{asset('AdminLTE')}}/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="{{asset('AdminLTE')}}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- BS-Stepper -->
-<script src="{{asset('AdminLTE')}}/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 <!-- dropzonejs -->
-<script src="{{asset('AdminLTE')}}/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/plugins/dropzone/min/dropzone.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('AdminLTE')}}/dist/js/adminlte.min.js"></script>
+<script src="{{ asset('AdminLTE') }}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('AdminLTE')}}/dist/js/demo.js"></script>
+<script src="{{ asset('AdminLTE') }}/dist/js/demo.js"></script>
 <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.19.custom.min.js"></script>
