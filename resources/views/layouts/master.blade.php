@@ -1,9 +1,6 @@
 @include ('layouts.header')
-
 @section('title','E-Office')
-
+@include('sweetalert::alert')
 @include ('layouts.sidebar')
-
 @include ('layouts.content')
-
 @include ('layouts.footer')

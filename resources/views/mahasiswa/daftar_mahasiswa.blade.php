@@ -23,16 +23,15 @@
     <div class="table-data">
         <div class="order">
             <div class="head">
-
                 <h3>Daftar Mahasiswa</h3>
                 <i class='bx bx-search'></i>
                 <i class='bx bx-filter'></i>
             </div>
             <div class="head">
                 <button class="add">
-                    <a href="/tambah_daftar_mahasiswa" style="color: inherit">
+                    <a href="{{ route('mahasiswa.create') }}" style="color: inherit">
                         <i class='bx bx-user-plus' style="size: 100px;"></i>
-                        Tambah Daftar Mahasiswa
+                        Tambah Mahasiswa
                     </a>
                 </button>
             </div>
@@ -56,7 +55,7 @@
                             <td>{{ $mhs->nim }}</td>
                             <td>{{ $mhs->prodi }}</td>
                             <td>{{ $mhs->j_kel }}</td>
-                            <td>
+                            <td class="d-flex justify-content-around">
                                 <button class="action" style="background: #3C91E6">
                                     <a href="{{ route('mahasiswa.show', $mhs->nim) }}" style="color: inherit">
                                         <i class='bx bxs-detail'></i>
@@ -64,17 +63,19 @@
                                     </a>
                                 </button>
                                 <button class="action" style="background: #ff8200">
-                                    <a href="/daftar_mahasiswa-edit" style="color: inherit">
+                                    <a href="{{ route('mahasiswa.edit', $mhs->nim) }}" style="color: inherit">
                                         <i class='bx bxs-edit'></i>
                                         Edit
                                     </a>
                                 </button>
-                                <button class="action" style="background: #cc2936">
-                                    <a href="#" style="color: inherit">
-                                        <i class='bx bx-trash'></i>
-                                        Hapus
-                                    </a>
-                                </button>
+                                <form action="{{ route('mahasiswa.delete', $mhs->nim) }}" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="action" style="background: #cc2936">
+                                            <i class='bx bx-trash'></i>
+                                            Hapus
+                                    </button>
+                                </form>
                             </td>
 
                         </tr>
