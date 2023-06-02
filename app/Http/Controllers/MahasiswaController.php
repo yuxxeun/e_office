@@ -10,9 +10,13 @@ use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswa = Mahasiswa::all();
+        if ($request->keyword) {
+            $mahasiswa = Mahasiswa::search($request->keyword)->paginate(10);
+        } else { 
+           $mahasiswa = Mahasiswa::all();
+        }
         return view('mahasiswa.daftar_mahasiswa')->with('mahasiswa', $mahasiswa);
     }
 

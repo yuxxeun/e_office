@@ -11,21 +11,25 @@
         <li>
             <a href="/daftar_mahasiswa">Daftar Mahasiswa</a>
         </li>
-        <li><i class='bx bx-chevron-right'></i></li>
-        <li>
-            <a class="active" href="/daftar_mahasiswa">Daftar Mahasiswa</a>
-        </li>
     </ul>
 @endsection
 
 @section('main_content')
-
     <div class="table-data">
         <div class="order">
             <div class="head">
                 <h3>Daftar Mahasiswa</h3>
-                <i class='bx bx-search'></i>
-                <i class='bx bx-filter'></i>
+                    {{-- search form --}}
+                        <form method="get" id="form">
+                            <input type="text" id="selectform" name="keyword" class="px-3 py-2" placeholder="Cari mahasiswa" value="{{ request('keyword') }}" />
+                            <button type="submit" class="py-2 px-3 rounded-lg">
+                                Search
+                            </button>
+                            <button type="submit" name="keyword" class="py-2 px-3 rounded-lg" value="">
+                                Reset
+                            </button>        
+                        </form>
+                    {{-- end search --}}
             </div>
             <div class="head">
                 <button class="add">
