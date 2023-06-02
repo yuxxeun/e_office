@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CobaController;
-use App\http\Controllers\CreateNaskahController;
+use App\Http\Controllers\DaftarSurat;
+use App\Http\Controllers\DaftarSuratController;
+use App\Http\Controllers\DashboardController;
 use App\http\Controllers\MahasiswaController;
+use App\Http\Controllers\NaskahController;
 use App\http\Controllers\WordController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /* Controller Coba */
-
 Route::get('/coba', [CobaController::class, 'index']);
 
 /* Controller Login */
@@ -18,6 +18,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('isLogin');
 
+// Auth Controller
 Route::get('/', [SessionController::class, 'index'])->middleware('isGuest');
 Route::post('/sesi/login', [SessionController::class, 'login'])->middleware('isGuest');
 Route::get('/sesi/logout', [SessionController::class, 'logout']);
@@ -25,44 +26,55 @@ Route::get('/register', [SessionController::class, 'register']);
 Route::post('/create', [SessionController::class, 'create'])->middleware('isGuest');
 
 
-/* Controller Create Naskah */
-Route::get('/buat_naskah', [CreateNaskahController::class, 'buat_naskah']);
-Route::get('/riwayat', [CreateNaskahController::class, 'riwayat']);
-Route::get('/suket_mhs_aktif', [CreateNaskahController::class, 'suket_mhs_aktif']);
-Route::get('/suket_tunjangan', [CreateNaskahController::class, 'suket_tunjangan']);
-Route::get('/surat_izin_kkn', [CreateNaskahController::class, 'surat_izin_kkn']);
-Route::get('/surat_izin_magang', [CreateNaskahController::class, 'surat_izin_magang']);
-Route::get('/surat_izin_penelitian', [CreateNaskahController::class, 'surat_izin_penelitian']);
-Route::get('/surat_izin_observasi_matkul', [CreateNaskahController::class, 'surat_izin_observasi_matkul']);
-Route::get('/surat_izin_observasi_TA', [CreateNaskahController::class, 'surat_izin_observasi_TA']);
+/* Route Naskah */
+Route::controller(NaskahController::class)
+    ->middleware(['auth'])
+    ->prefix('naskah')
+    ->group(function() {
+        Route::get('/', 'naskah')->name('naskah.index');
+        Route::get('/suket_mhs_aktif', 'suket_mhs_aktif')->name('naskah.mhsaktif');
+        Route::get('/suket_tunjangan', 'suket_tunjangan')->name('naskah.tunjangan');
+        Route::get('/surat_izin_kkn', 'surat_izin_kkn')->name('naskah.kkn');
+        Route::get('/surat_izin_magang', 'surat_izin_magang')->name('naskah.magang');
+        Route::get('/surat_izin_penelitian', 'surat_izin_penelitian')->name('naskah.penelitian');
+        Route::get('/surat_izin_observasi_matkul', 'surat_izin_observasi_matkul')->name('naskah.observasimatkul');
+        Route::get('/surat_izin_observasi_TA', 'surat_izin_observasi_TA')->name('naskah.observasi');
+});
+
+// Route Mahasiswa
+Route::controller(MahasiswaController::class)->prefix('mahasiswa')->group(function() {
+    Route::get('/', 'index')->name('mahasiswa.index');
+    Route::get('/tambah', 'create')->name('mahasiswa.create');
+    Route::post('/tambah', 'store')->name('mahasiswa.store');
+    Route::get('/detail/{id}', 'show')->name('mahasiswa.show');
+    Route::get('/edit/{id}', 'edit')->name('mahasiswa.edit');
+    Route::put('/edit/{id}', 'update')->name('mahasiswa.update');
+    Route::delete('/hapus/{id}', 'destroy')->name('mahasiswa.delete');
+});
+
+Route::get('dashboard', [DashboardController::class, 'daftar_user']);
+
+Route::controller(DaftarSuratController::class)->prefix('daftar-surat')->group(function() {
+    Route::get('/', 'index')->name('surat.index');    
+});
 
 /* Controller Mahasiswa */
-Route::get('/daftar_mahasiswa', [MahasiswaController::class, 'daftar_mahasiswa']);
-Route::post('/daftar_mahasiswa', [MahasiswaController::class, 'store']);
-Route::get('/daftar_mahasiswa-detail/{id}', [MahasiswaController::class, 'show'])->name('mahasiswa.show');
-Route::get('/daftar_mahasiswa-edit', [MahasiswaController::class, 'edit']);
 
+// Controller Surat
 Route::view('/daftar_surat', 'daftar_surat');
 
+
 Route::view('/user', 'user');
-
 Route::view('/adminpages', 'adminpages');
-
 Route::view('/content_form', 'contentform');
-
 Route::view('/masukbaru', 'masukbaru');
 Route::view('/tambah_daftar_mahasiswa', 'tambah_daftar_mahasiswa');
-
 Route::view('/tambah_data', 'layouts.tambah_data');
 Route::view('/daftar_tabel', 'layouts.daftar_table');
-
-
 Route::get('/word', function () {
     return view('word');
 });
 Route::post('/word', [WordController::class, 'tes'])->name('word.tes');
-
-
 
 /*Route::get('/test-koneksi-database', function () {
     try {

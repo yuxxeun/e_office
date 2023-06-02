@@ -22,14 +22,14 @@
         <i class='bx bxs-calendar-check'></i>
         <span class="text">
             <h3>1020</h3>
-            <p>New Order</p>
+            <p>Jumlah Naskah</p>
         </span>
     </li>
     <li>
         <i class='bx bxs-group'></i>
         <span class="text">
-            <h3>2834</h3>
-            <p>Visitors</p>
+            <h3>{{ $users->count() }}</h3>
+            <p>Jumlah Mahasiswa</p>
         </span>
     </li>
     <li>

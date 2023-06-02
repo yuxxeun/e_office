@@ -9,7 +9,7 @@
         </li>
         <li><i class='bx bx-chevron-right'></i></li>
         <li>
-            <a class="active" href="/tambah_daftar_mahasiswa">Tambah Daftar Mahasiswa</a>
+            <a class="active" href="/tambah_daftar_mahasiswa">Edit {{ $mahasiswa->nama }}</a>
         </li>
     </ul>
 @endsection
@@ -17,34 +17,35 @@
 @section('form_input')
     <div class="table-data">
         <div class="order">
-        @section('title_surat', 'Tambah Daftar Mahasiswa')
+        @section('title_surat', 'Edit Data Mahasiswa')
 
-        <form action="/daftar_mahasiswa" class="form" method="POST">
-            {{ csrf_field() }}
+        <form action="{{ route('mahasiswa.update', $mahasiswa->nim) }}" class="form" method="post">
+            @csrf
+            @method('PUT')
             <div class="input-box">
                 <label>NIM</label>
-                <input type="text" name="nim" placeholder="Masukkan NIM">
+                <input type="text" name="nim" value="{{ $mahasiswa->nim }}">
             </div>
             <div class="input-box">
                 <label>Nama</label>
-                <input type="text" name="nama" placeholder="Masukkan nama lengkap" required />
+                <input type="text" name="nama" value="{{ $mahasiswa->nama }}" />
             </div>
             <div class="input-box">
                 <label>Program Studi</label>
-                <input type="text" name="prodi" placeholder="Masukkan program studi" required />
+                <input type="text" name="prodi" value="{{ $mahasiswa->prodi }}" />
             </div>
             <div class="input-box address">
                 <label>Jenis Kelamin</label>
                 <div class="select-box">
                     <select name="j_kel" id="j_kel">
-                        <option hidden>Pilih Jenis Kelamin</option>
+                        <option value="{{ $mahasiswa->j_kel }}">{{ $mahasiswa->j_kel }}</option>
                         <option value="laki-laki">Laki-laki</option>
                         <option value="perempuan">Perempuan</option>
                     </select>
                 </div>
             </div>
             <div class="button">
-                <button>Submit</button>
+                <button type="submit">Submit</button>
             </div>
 
         </form>

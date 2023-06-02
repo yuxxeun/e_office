@@ -11,10 +11,16 @@
                 <span class="text">Dashboard</span>
             </a>
         </li>
-        <li class="{{ Request::path() === 'buat_naskah' ? 'active' : ''}} ">
-            <a href="/buat_naskah">
+        <li class="{{ Request::url() == request()->routeIs('naskah.*') ? 'active' : ''}} ">
+            <a href="{{ route('naskah.index') }}">
                 <i class='bx bxs-shopping-bag-alt'></i>
                 <span class="text">Buat Naskah</span>
+            </a>
+        </li>
+        <li class="{{ Request::url() == request()->routeIs('daftar-surat.*') ? 'active' : ''}} ">
+            <a href="{{ route('surat.index') }}">
+                <i class='bx bxs-shopping-bag-alt'></i>
+                <span class="text">Daftar Surat</span>
             </a>
         </li>
         <li class="{{ Request::path() === 'riwayat' ? 'active' : ''}} ">
@@ -23,18 +29,18 @@
                 <span class="text">Riwayat</span>
             </a>
         </li>
-        <li class="{{ Request::path() === 'daftar_mahasiswa' ? 'active' : ''}} ">
-            <a href="/daftar_mahasiswa">
+        <li class="{{ Request::url() == request()->routeIs('mahasiswa.*') ? 'active' : ''}} ">
+            <a href="{{ route('mahasiswa.index') }}">
                 <i class='bx bxs-message-dots'></i>
                 <span class="text">Daftar Mahasiswa</span>
             </a>
         </li>
-        <li>
+        {{-- <li>
             <a href="#">
                 <i class='bx bxs-group'></i>
                 <span class="text">Team</span>
             </a>
-        </li>
+        </li> --}}
     </ul>
     <ul class="side-menu">
         <li>
