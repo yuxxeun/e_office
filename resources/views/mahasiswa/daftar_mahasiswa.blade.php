@@ -11,6 +11,12 @@
         <li>
             <a href="/daftar_mahasiswa">Daftar Mahasiswa</a>
         </li>
+        @if(request()->keyword)
+            <li><i class='bx bx-chevron-right'></i></li>
+            <li>
+                <a class="active" href="/daftar_mahasiswa">Cari Mahasiswa</a>
+            </li>
+        @endif
     </ul>
 @endsection
 
@@ -25,7 +31,7 @@
                             <button type="submit" class="py-2 px-3 rounded-lg">
                                 Search
                             </button>
-                            <button type="submit" name="keyword" class="py-2 px-3 rounded-lg" value="">
+                            <button type="submit" name="keyword" class="py-2 px-3 rounded-lg">
                                 Reset
                             </button>        
                         </form>
@@ -40,7 +46,7 @@
                 </button>
             </div>
             <table>
-                <thead>
+                <thead class="items-center mx-auto justify-center content-center">
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
