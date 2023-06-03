@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CobaController;
@@ -8,49 +9,60 @@ use App\Http\Controllers\DaftarSuratController;
 use App\Http\Controllers\DashboardController;
 use App\http\Controllers\MahasiswaController;
 use App\Http\Controllers\NaskahController;
+use App\Http\Controllers\RiwayatController;
 use App\http\Controllers\WordController;
-
-/* Controller Coba */
-Route::get('/coba', [CobaController::class, 'index']);
-
-/* Controller Login */
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('isLogin');
+use FontLib\Table\Type\name;
+use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 // Auth Controller
-Route::get('/', [SessionController::class, 'index'])->middleware('isGuest');
-Route::post('/sesi/login', [SessionController::class, 'login'])->middleware('isGuest');
-Route::get('/sesi/logout', [SessionController::class, 'logout']);
+Route::get('/', [SessionController::class, 'index'])->name('login');
+Route::post('/sesi/login', [SessionController::class, 'login'])->name('sesi.login');
+Route::get('/logout', [SessionController::class, 'logout'])->middleware(['auth'])->name('logout');
 Route::get('/register', [SessionController::class, 'register']);
-Route::post('/create', [SessionController::class, 'create'])->middleware('isGuest');
+Route::post('/create', [SessionController::class, 'create']);
 
+// Dashboard route
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-/* Route Naskah */
+// Naskah route
 Route::controller(NaskahController::class)
     ->middleware(['auth'])
     ->prefix('naskah')
     ->group(function() {
         Route::get('/', 'naskah')->name('naskah.index');
-        Route::get('/suket_mhs_aktif', 'suket_mhs_aktif')->name('naskah.mhsaktif');
-        Route::get('/suket_tunjangan', 'suket_tunjangan')->name('naskah.tunjangan');
-        Route::get('/surat_izin_kkn', 'surat_izin_kkn')->name('naskah.kkn');
-        Route::get('/surat_izin_magang', 'surat_izin_magang')->name('naskah.magang');
-        Route::get('/surat_izin_penelitian', 'surat_izin_penelitian')->name('naskah.penelitian');
-        Route::get('/surat_izin_observasi_matkul', 'surat_izin_observasi_matkul')->name('naskah.observasimatkul');
-        Route::get('/surat_izin_observasi_TA', 'surat_izin_observasi_TA')->name('naskah.observasi');
-});
+        Route::get('/suket-mahasisawa-aktif', 'suket_mhs_aktif')->name('naskah.aktif');
+        Route::get('/suket-tunjangan', 'suket_tunjangan')->name('naskah.tunjangan');
+        Route::get('/surat-izin-kkn', 'surat_izin_kkn')->name('naskah.kkn');
+        Route::get('/surat-izin-magang', 'surat_izin_magang')->name('naskah.magang');
+        Route::get('/surat-izin-penelitian', 'surat_izin_penelitian')->name('naskah.penelitian');
+        Route::get('/surat-izin-observasi-matkul', 'surat_izin_observasi_matkul')->name('naskah.observasimatkul');
+        Route::get('/surat_izin_observasi_TA', 'surat_izin_observasi_TA')->name('naskah.observasita');
+    });
 
-// Route Mahasiswa
-Route::controller(MahasiswaController::class)->prefix('mahasiswa')->group(function() {
-    Route::get('/', 'index')->name('mahasiswa.index');
-    Route::get('/tambah', 'create')->name('mahasiswa.create');
-    Route::post('/tambah', 'store')->name('mahasiswa.store');
-    Route::get('/detail/{id}', 'show')->name('mahasiswa.show');
-    Route::get('/edit/{id}', 'edit')->name('mahasiswa.edit');
-    Route::put('/edit/{id}', 'update')->name('mahasiswa.update');
-    Route::delete('/hapus/{id}', 'destroy')->name('mahasiswa.delete');
-});
+// Mahasiswa route
+Route::controller(MahasiswaController::class)
+    ->middleware(['auth'])
+    ->prefix('mahasiswa')
+    ->group(function() {
+        Route::get('/', 'index')->name('mahasiswa.index');
+        Route::get('/tambah', 'create')->name('mahasiswa.create');
+        Route::post('/tambah', 'store')->name('mahasiswa.store');
+        Route::get('/detail/{id}', 'show')->name('mahasiswa.show');
+        Route::get('/edit/{id}', 'edit')->name('mahasiswa.edit');
+        Route::put('/edit/{id}', 'update')->name('mahasiswa.update');
+        Route::delete('/hapus/{id}', 'destroy')->name('mahasiswa.delete');
+    });
+
+// Riwayat route
+Route::controller(RiwayatController::class)->prefix('riwayat')->group(function() {
+    Route::get('/', 'index')->name('riwayat.index');
+}); 
+
+// Health route 
+Route::get('health', [HealthCheckResultsController::class, '__invoke']);
+
 
 Route::get('dashboard', [DashboardController::class, 'daftar_user']);
 

@@ -44,13 +44,13 @@
     </ul>
     <ul class="side-menu">
         <li>
-            <a href="#">
-                <i class='bx bxs-cog'></i>
-                <span class="text">Settings</span>
+            <a href="/health" target="blank">
+                <i class='bx bxs-heart'></i>
+                <span class="text">Check Health</span>
             </a>
         </li>
         <li>
-            <a href="#" class="logout">
+            <a href="{{ route('logout') }}" class="logout">
                 <i class='bx bxs-log-out-circle'></i>
                 <span class="text">Logout</span>
             </a>

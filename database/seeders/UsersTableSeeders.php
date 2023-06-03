@@ -2,22 +2,20 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-
 class UsersTableSeeders extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run()
     {
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('welcome123')
+            'password' => bcrypt('welcome123'),
+            'remember_token' => null,
+            'created_at' => Carbon::now()->format('Y-m-d h:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d h:i:s'),
         ]);
     }
 }

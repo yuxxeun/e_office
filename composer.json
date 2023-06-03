@@ -15,9 +15,11 @@
         "laravel/tinker": "^2.8",
         "phpoffice/phpword": "^1.0",
         "realrashid/sweet-alert": "^7.0",
-        "select2/select2": "^4.0"
+        "select2/select2": "^4.0",
+        "spatie/laravel-health": "^1.22"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.8",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
