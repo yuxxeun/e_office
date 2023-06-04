@@ -36,6 +36,10 @@
                             </button>        
                         </form>
                     {{-- end search --}}
+
+                    <a href="{{ route('mahasiswa.pdf') }}">
+                        Export to pdf
+                    </a>
             </div>
             <div class="head">
                 <button class="add">
@@ -48,7 +52,6 @@
             <table>
                 <thead class="items-center mx-auto justify-center content-center">
                     <tr>
-                        <th>No</th>
                         <th>Nama</th>
                         <th>NIM</th>
                         <th>Program Studi</th>
@@ -60,7 +63,6 @@
                 @foreach ($mahasiswa as $mhs)
                     <tbody>
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $mhs->nama }}</td>
                             <td>{{ $mhs->nim }}</td>
                             <td>{{ $mhs->prodi }}</td>

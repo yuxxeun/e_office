@@ -1,17 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
-use App\Http\Controllers\CobaController;
-use App\Http\Controllers\DaftarSurat;
-use App\Http\Controllers\DaftarSuratController;
-use App\Http\Controllers\DashboardController;
 use App\http\Controllers\MahasiswaController;
 use App\Http\Controllers\NaskahController;
 use App\Http\Controllers\RiwayatController;
-use App\http\Controllers\WordController;
-use FontLib\Table\Type\name;
+use App\Http\Controllers\SuratController;
 use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 // Auth Controller
@@ -53,7 +47,17 @@ Route::controller(MahasiswaController::class)
         Route::get('/edit/{id}', 'edit')->name('mahasiswa.edit');
         Route::put('/edit/{id}', 'update')->name('mahasiswa.update');
         Route::delete('/hapus/{id}', 'destroy')->name('mahasiswa.delete');
+        Route::get('pdf', 'exportpdf')->name('mahasiswa.pdf');
     });
+
+Route::controller(SuratController::class)
+    ->middleware(['auth'])
+    ->prefix('buat-surat')
+    ->group(function() {
+        Route::get('/', 'create')->name('buat-surat.create');
+    });
+
+Route::get('surat', [SuratController::class, 'index'])->name('surat.index');
 
 // Riwayat route
 Route::controller(RiwayatController::class)->prefix('riwayat')->group(function() {
@@ -64,36 +68,6 @@ Route::controller(RiwayatController::class)->prefix('riwayat')->group(function()
 Route::get('health', [HealthCheckResultsController::class, '__invoke']);
 
 
-Route::get('dashboard', [DashboardController::class, 'daftar_user']);
-
-Route::controller(DaftarSuratController::class)->prefix('daftar-surat')->group(function() {
-    Route::get('/', 'index')->name('surat.index');    
-});
-
-/* Controller Mahasiswa */
-
-// Controller Surat
-Route::view('/daftar_surat', 'daftar_surat');
-
-
-Route::view('/user', 'user');
 Route::view('/adminpages', 'adminpages');
 Route::view('/content_form', 'contentform');
 Route::view('/masukbaru', 'masukbaru');
-Route::view('/tambah_daftar_mahasiswa', 'tambah_daftar_mahasiswa');
-Route::view('/tambah_data', 'layouts.tambah_data');
-Route::view('/daftar_tabel', 'layouts.daftar_table');
-Route::get('/word', function () {
-    return view('word');
-});
-Route::post('/word', [WordController::class, 'tes'])->name('word.tes');
-
-/*Route::get('/test-koneksi-database', function () {
-    try {
-        \DB::connection()->getPdo();
-
-        echo 'Sudah terkoneksi dengan database: ' . \DB::connection()->getDatabaseName();
-    } catch (\Exception $e) {
-        echo 'Belum terkoneksi database, error: ' . $e->getMessage();
-    }
-});*/

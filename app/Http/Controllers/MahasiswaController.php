@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert as Alert;
-
 use Illuminate\Http\Request;
+
 
 class MahasiswaController extends Controller
 {
@@ -70,5 +72,12 @@ class MahasiswaController extends Controller
         
         Alert::success('Berhasil 🎉🥳', 'Berhasil menghapus data mahasiswa');
         return redirect()->route('mahasiswa.index');
+    }
+
+    public function exportpdf()
+    {
+        $datas = Mahasiswa::all();
+        $pdf = Pdf::loadView('mahasiswa.pdf', ['datas' => $datas]);
+        return $pdf->download('Data Mahsaiswa -'. Carbon::now()->format('Y-m-d') . '.pdf');
     }
 }

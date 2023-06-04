@@ -28,7 +28,7 @@
     <li>
         <i class='bx bxs-group'></i>
         <span class="text">
-            <h3>{{ $users->count() }}</h3>
+            <h3>123</h3>
             <p>Total Surat</p>
         </span>
     </li>

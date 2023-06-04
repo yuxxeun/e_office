@@ -11,13 +11,13 @@
                 <span class="text">Dashboard</span>
             </a>
         </li>
-        <li class="{{ Request::url() == request()->routeIs('naskah.*') ? 'active' : ''}} ">
-            <a href="{{ route('naskah.index') }}">
+        <li class="{{ Request::url() == request()->routeIs('buat-surat.*') ? 'active' : ''}} ">
+            <a href="{{ route('buat-surat.create') }}">
                 <i class='bx bxs-shopping-bag-alt'></i>
-                <span class="text">Buat Naskah</span>
+                <span class="text">Buat Surat</span>
             </a>
         </li>
-        <li class="{{ Request::url() == request()->routeIs('daftar-surat.*') ? 'active' : ''}} ">
+        <li class="{{ Request::url() == request()->routeIs('surat.index') ? 'active' : ''}} ">
             <a href="{{ route('surat.index') }}">
                 <i class='bx bxs-shopping-bag-alt'></i>
                 <span class="text">Daftar Surat</span>
