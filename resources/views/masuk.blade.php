@@ -15,6 +15,7 @@
                 </div>
                 <form action="/sesi/login" method="post">
                     @csrf
+                    @method('post')
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
                         <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ Session::get('email') }}" autofocus required>

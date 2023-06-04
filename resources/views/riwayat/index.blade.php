@@ -12,11 +12,7 @@
 @section('breadcrumb')
 <ul class="breadcrumb">
     <li>
-        <a href="/riwayat">Daftar Surat</a>
-    </li>
-    <li><i class='bx bx-chevron-right'></i></li>
-    <li>
-        <a class="active" href="/riwayat">Daftar Surat</a>
+        <a href="{{ Request::url() }}">{{ Request::url() }}</a>
     </li>
 </ul>
 @endsection
@@ -99,29 +95,11 @@
                 <i class='bx bxs-chevrons-right'></i>
             </button>
         </div>
-
-
     </div>
 </div>
 
 <div class="card-body">
     <div id="example1" class="dataTables_wrapper dt-bootstrap4">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">Tes</div>
-            <div class="col-sm-12 col-md-6">
-                <div id="example1_wrapper" class="dataTables_filter">
-                    <label>Search:
-                        <input type="search" class="form-control form-control-sm" placeholder=" &#xf040;  Cari">
-                    </label>
-                </div><br>
-                <div id="example1_wrapper" class="dataTables_filter">
-                    Urutkan
-                </div>
-            </div>
-        </div>
-        <br>
-
-
         <div class="row">
             <div class="col-sm-12 col-md-5">
                 <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>

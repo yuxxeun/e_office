@@ -23,7 +23,7 @@
 <div class="container">
     <div class="box-container">
         <div class="box">
-            <a href="/suket_mhs_aktif">
+            <a href="{{ route('naskah.aktif') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Keterangan Mahasiswa Aktif</p>
@@ -31,23 +31,21 @@
             </a>
         </div>
         <div class="box">
-            <a href="/suket_tunjangan">
+            <a href="{{ route('naskah.tunjangan') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Keterangan Tunjangan Anak pada Gaji Orang Tua</p>
-                <!--<a href="#" class="btn">Buat Naskah</a>-->
             </a>
         </div>
         <div class="box">
-            <a href="/surat_izin_kkn">
+            <a href="{{ route('naskah.kkn') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Magang KKN Tematik</p>
-                <!--<a href="#" class="btn">Buat Naskah</a>-->
             </a>
         </div>
         <div class="box">
-            <a href="/surat_izin_magang">
+            <a href="{{ route('naskah.magang') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Magang/PKL</p>

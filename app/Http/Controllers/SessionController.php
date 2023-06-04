@@ -33,19 +33,17 @@ class SessionController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
-            //otentikasi sukses
-            // return 'sukses';
-            return redirect('/dashboard');
+            return redirect('dashboard');
         } else {
-            //return 'gagal';
             return redirect('/')->withErrors('Email dan Password yang dimasukkan tidak valid');
         }
     }
 
     function logout()
     {
+        Session::flush();
         Auth::logout();
-        return redirect('/');
+        return redirect()->route('login');
     }
 
     function register()
