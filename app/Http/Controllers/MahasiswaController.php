@@ -15,7 +15,7 @@ class MahasiswaController extends Controller
         if ($request->keyword) {
             $mahasiswa = Mahasiswa::search($request->keyword)->paginate(10);
         } else {
-            $mahasiswa = Mahasiswa::all();
+            $mahasiswa = Mahasiswa::paginate(10);
         }
 
         return view('mahasiswa.daftar_mahasiswa')->with('mahasiswa', $mahasiswa);
