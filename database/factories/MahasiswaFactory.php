@@ -14,7 +14,7 @@ class MahasiswaFactory extends Factory
 
         return [
             'nim' => $this->faker->numberBetween(10000),
-            'nama' =>  $this->faker->name($j_kel),
+            'nama' => $this->faker->name($j_kel),
             'prodi' => $prodi,
             'j_kel' => $j_kel,
             'created_at' => Carbon::now()->format('Y-m-d h:i:s'),

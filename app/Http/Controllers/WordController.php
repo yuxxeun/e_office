@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class WordController extends Controller
@@ -21,8 +20,8 @@ class WordController extends Controller
         // Adding Text element to the Section having font styled by default...
         $section->addText(
             '"Learn from yesterday, live for today, hope for tomorrow. '
-                . 'The important thing is not to stop questioning." '
-                . '(Albert Einstein)'
+                .'The important thing is not to stop questioning." '
+                .'(Albert Einstein)'
         );
 
         /*
@@ -35,21 +34,21 @@ class WordController extends Controller
         // Adding Text element with font customized inline...
         $section->addText(
             '"Great achievement is usually born of great sacrifice, '
-                . 'and is never the result of selfishness." '
-                . '(Napoleon Hill)',
-            array('name' => 'Tahoma', 'size' => 10)
+                .'and is never the result of selfishness." '
+                .'(Napoleon Hill)',
+            ['name' => 'Tahoma', 'size' => 10]
         );
 
         // Adding Text element with font customized using named font style...
         $fontStyleName = 'oneUserDefinedStyle';
         $phpWord->addFontStyle(
             $fontStyleName,
-            array('name' => 'Tahoma', 'size' => 10, 'color' => '1B2232', 'bold' => true)
+            ['name' => 'Tahoma', 'size' => 10, 'color' => '1B2232', 'bold' => true]
         );
         $section->addText(
             '"The greatest accomplishment is not in never falling, '
-                . 'but in rising again after you fall." '
-                . '(Vince Lombardi)',
+                .'but in rising again after you fall." '
+                .'(Vince Lombardi)',
             $fontStyleName
         );
 

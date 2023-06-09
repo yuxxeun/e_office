@@ -1,6 +1,16 @@
 @extends('layouts.buat_naskah.content_form')
-
 @section('title_surat', 'Izin Penelitian Tugas Akhir')
+@section('breadcrumb')
+<ul class="breadcrumb">
+    <li>
+        <a href="{{ route('buat-surat.create') }}">Buat Surat</a>
+    </li>
+    <li><i class='bx bx-chevron-right'></i></li>
+    <li>
+        <a class="active" href="{{ route('buat-surat.penelitian') }}">Surat Penelitian</a>
+    </li>
+</ul>
+@endsection
 
 @section('form_input')
 <br>

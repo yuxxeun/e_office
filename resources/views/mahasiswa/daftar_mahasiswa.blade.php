@@ -83,7 +83,8 @@
                                 <form action="{{ route('mahasiswa.delete', $mhs->nim) }}" method="post">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="action" style="background: #cc2936">
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button type="submit" class="action show_confirm" data-toggle="tooltip" style="background: #cc2936">
                                             <i class='bx bx-trash'></i>
                                             Hapus
                                     </button>
@@ -93,10 +94,11 @@
                         </tr>
                     </tbody>
                 @endforeach
-
             </table>
+            <div class="d-flex justify-contetn-center mt-5 justify-end">
+                {{ $mahasiswa->links() }}
+            </div>
         </div>
-
     </div>
 @endsection
 

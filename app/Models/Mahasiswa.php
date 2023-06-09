@@ -10,8 +10,11 @@ class Mahasiswa extends Model
 {
     use HasFactory;
     use Searchable;
+
     protected $table = 'mahasiswa';
+
     protected $primaryKey = 'nim';
+
     protected $guarded = [];
 
     public function toSearchableArray(): array
