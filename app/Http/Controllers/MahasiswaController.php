@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
-use RealRashid\SweetAlert\Facades\Alert as Alert;
 use Illuminate\Http\Request;
-
+use RealRashid\SweetAlert\Facades\Alert as Alert;
 
 class MahasiswaController extends Controller
 {
@@ -16,9 +14,10 @@ class MahasiswaController extends Controller
     {
         if ($request->keyword) {
             $mahasiswa = Mahasiswa::search($request->keyword)->paginate(10);
-        } else { 
-           $mahasiswa = Mahasiswa::all();
+        } else {
+            $mahasiswa = Mahasiswa::paginate(10);
         }
+
         return view('mahasiswa.daftar_mahasiswa')->with('mahasiswa', $mahasiswa);
     }
 
@@ -35,6 +34,7 @@ class MahasiswaController extends Controller
         $mahasiswa->prodi = $request->prodi;
         $mahasiswa->j_kel = $request->j_kel;
         $mahasiswa->save();
+
         return redirect()->route('mahasiswa.index');
     }
 
@@ -48,6 +48,7 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
+
         return view('mahasiswa.edit_daftar_mahasiswa', compact('mahasiswa'));
     }
 
@@ -69,8 +70,9 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::findOrfail($id);
         $mahasiswa->delete();
-        
+
         Alert::success('Berhasil 🎉🥳', 'Berhasil menghapus data mahasiswa');
+
         return redirect()->route('mahasiswa.index');
     }
 
@@ -78,6 +80,7 @@ class MahasiswaController extends Controller
     {
         $datas = Mahasiswa::all();
         $pdf = Pdf::loadView('mahasiswa.pdf', ['datas' => $datas]);
-        return $pdf->download('Data Mahsaiswa -'. Carbon::now()->format('Y-m-d') . '.pdf');
+
+        return $pdf->download('Data Mahsaiswa -'.Carbon::now()->format('Y-m-d').'.pdf');
     }
 }

@@ -34,9 +34,29 @@
 <script src="{{asset('AdminLTE')}}/dist/js/pages/dashboard.js"></script>
 </body>
 
+<script src="sweetalert2.all.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
 </script>
 <script src="{{asset('js')}}/script.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $('.show_confirm').click(function(event) {
+         var form =  $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault();
+         swal({
+             title: `Peringatan!`,
+             text: "Apakah kamu yakin ingin menghapus data?",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+         .then((willDelete) => {
+           if (willDelete) {
+             form.submit();
+           }
+         });
+     });
+</script>
 </html>

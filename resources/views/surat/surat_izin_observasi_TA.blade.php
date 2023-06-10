@@ -1,7 +1,20 @@
 @extends('layouts.buat_naskah.content_form')
-
 @section('title_surat', 'Izin Observasi Tugas Akhir')
-
+@section('breadcrumb')
+<ul class="breadcrumb">
+    <li>
+        <a href="{{ route('buat-surat.create') }}">
+            Buat Surat
+        </a>
+    </li>
+    <li>
+        <i class='bx bx-chevron-right'></i>
+    </li>
+    <li>
+        <a class="active" href="{{ route('buat-surat.tunjangan') }}">Surat Keterangan Tunjangan Orang Tua</a>
+    </li>
+    </ul>
+@endsection
 @section('form_input')
 <br>
 <div class="card-body">

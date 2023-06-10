@@ -1,19 +1,12 @@
 <link rel="stylesheet" href="{{asset('css/buat_naskah.css')}}">
 
 @extends('layouts.master')
-
-@section('title','E-Office - Buat Naskah')
-
-@section('title_content','Buat Naskah')
-
+@section('title','E-Office - Buat Surat')
+@section('title_content','Buat Surat')
 @section('breadcrumb')
 <ul class="breadcrumb">
     <li>
-        <a href="/buat_naskah">Buat Naskah</a>
-    </li>
-    <li><i class='bx bx-chevron-right'></i></li>
-    <li>
-        <a class="active" href="/buat_naskah">Buat Naskah</a>
+        <a href="{{ route('buat-surat.create') }}">Buat Surat</a>
     </li>
 </ul>
 @endsection
@@ -23,58 +16,53 @@
 <div class="container">
     <div class="box-container">
         <div class="box">
-            <a href="{{ route('naskah.aktif') }}">
+            <a href="{{ route('buat-surat.mhsaktif') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Keterangan Mahasiswa Aktif</p>
-                <!--<a href="#" class="btn">Buat Naskah</a>-->
             </a>
         </div>
         <div class="box">
-            <a href="{{ route('naskah.tunjangan') }}">
+            <a href="{{ route('buat-surat.tunjangan') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Keterangan Tunjangan Anak pada Gaji Orang Tua</p>
             </a>
         </div>
         <div class="box">
-            <a href="{{ route('naskah.kkn') }}">
+            <a href="{{ route('buat-surat.kkn') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Magang KKN Tematik</p>
             </a>
         </div>
         <div class="box">
-            <a href="{{ route('naskah.magang') }}">
+            <a href="{{ route('buat-surat.magang') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Magang/PKL</p>
-                <!--<a href="#" class="btn">Buat Naskah</a>-->
             </a>
         </div>
 
         <div class="box">
-            <a href="/surat_izin_penelitian">
+            <a href="{{ route('buat-surat.peneliatian') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Penelitian Tugas Akhir</p>
-                <!--<a href="#" class="btn">Buat Naskah</a>-->
             </a>
         </div>
         <div class="box">
-            <a href="/surat_izin_observasi_matkul">
+            <a href="{{ route('buat-surat.matkul') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Observasi Mata Kuliah</p>
-                <!--<a href="#" class="btn">Buat Naskah</a>-->
             </a>
         </div>
         <div class="box">
-            <a href="/surat_izin_penelitian">
+            <a href="{{ route('buat-surat.tugasakhir') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Observasi Tugas Akhir</p>
-                <!--<a href="#" class="btn">Buat Naskah</a>-->
             </a>
         </div>
     </div>

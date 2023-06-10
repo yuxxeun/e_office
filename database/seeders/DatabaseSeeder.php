@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -9,6 +10,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeders::class);
         $this->call(MahasiswaSeeder::class);
+        $this->call(DosenSeeder::class);
         \App\Models\Mahasiswa::factory(10)->create();
     }
 }

@@ -1,15 +1,14 @@
 <link rel="stylesheet" href="{{ asset('css/suket_mhs_aktif.css') }}">
 
 @extends('layouts.buat_naskah.content_form')
-
 @section('breadcrumb')
     <ul class="breadcrumb">
         <li>
-            <a href="/buat_naskah">Buat Naskah</a>
+            <a href="{{ route('buat-surat.create') }}">Buat Surat</a>
         </li>
         <li><i class='bx bx-chevron-right'></i></li>
         <li>
-            <a class="active" href="/suket_mhs_aktif">Surat Keterangan Mahasiswa Aktif</a>
+            <a class="active" href="{{ route('buat-surat.mhsaktif') }}">Surat Keterangan Mahasiswa Aktif</a>
         </li>
     </ul>
 @endsection
@@ -18,7 +17,6 @@
     <div class="table-data">
         <div class="order">
         @section('title_surat', 'Keterangan Mahasiswa Aktif')
-
         <form method="POST" action="" class="form">
             <div class="input-box">
                 <label>Nama</label>
@@ -67,7 +65,6 @@
                 <div class="button">
                     <button>Submit</button>
                 </div>
-
         </form>
     </div>
 </div>
