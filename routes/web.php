@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DosenController;
 use App\http\Controllers\MahasiswaController;
 use App\Http\Controllers\NaskahController;
+use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SuratController;
@@ -71,6 +73,34 @@ Route::get('surat', [SuratController::class, 'index'])->name('surat.index');
 Route::controller(RiwayatController::class)->prefix('riwayat')->group(function () {
     Route::get('/', 'index')->name('riwayat.index');
 });
+
+// Dosen Route
+Route::controller(DosenController::class)
+    ->prefix('dosen')
+    ->middleware(['auth'])
+    ->group(function() {
+        Route::get('/', 'index')->name('dosen.index');
+        Route::get('/tambah', 'create')->name('dosen.create');
+        Route::post('/tambah', 'store')->name('dosen.store');
+        Route::get('/detail/{id}', 'show')->name('dosen.detail');
+        Route::get('/edit/{id}', 'edit')->name('dosen.edit');
+        Route::put('/edit/{id}', 'update')->name('dosen.update');
+        Route::delete('/hapus/{id}', 'destroy')->name('dosen.delete');
+    });
+
+    // Prodi Route
+    Route::controller(ProdiController::class)
+    ->prefix('prodi')
+    ->middleware(['auth'])
+    ->group(function() {
+        Route::get('/', 'index')->name('prodi.index');
+        Route::get('/tambah', 'create')->name('prodi.create');
+        Route::post('/tambah', 'store')->name('prodi.store');
+        Route::get('/detail/{id}', 'show')->name('prodi.detail');
+        Route::get('/edit/{id}', 'edit')->name('prodi.edit');
+        Route::put('/edit/{id}', 'update')->name('prodi.update');
+        Route::delete('/hapus/{id}', 'destroy')->name('prodi.delete');
+    });
 
 // Health route
 Route::get('health', [HealthCheckResultsController::class, '__invoke']);

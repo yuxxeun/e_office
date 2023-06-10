@@ -6,20 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 
-class Mahasiswa extends Model
+class Dosen extends Model
 {
     use HasFactory;
     use Searchable;
 
-    protected $table = 'mahasiswa';
-    protected $primaryKey = 'nim';
+    protected $table = 'dosens';
+    protected $primaryKey = 'nip';
     protected $guarded = [];
+
+    public function prodi()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 
     public function toSearchableArray(): array
     {
         return [
-            'nama' => $this->nama,
-            'nim' => $this->nim,
+            'nip' => $this->nip,
+            'nama_dosen' => $this->nama_dosen,
         ];
     }
 }

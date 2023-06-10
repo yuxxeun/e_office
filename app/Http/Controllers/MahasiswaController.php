@@ -63,7 +63,6 @@ class MahasiswaController extends Controller
         ]);
 
         Alert::success('Berhasil 🎉🥳', 'Berhasil mengubah data mahasiswa');
-
         return redirect()->route('mahasiswa.index');
     }
 

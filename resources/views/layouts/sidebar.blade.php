@@ -35,6 +35,24 @@
                 <span class="text">Daftar Mahasiswa</span>
             </a>
         </li>
+        <li class="{{ Request::url() == request()->routeIs('prodi.*') ? 'active' : ''}} ">
+            <a href="{{ route('prodi.index') }}">
+                <i class='bx bxs-message-dots'></i>
+                <span class="text">Program Studi</span>
+            </a>
+        </li>
+        <li class="{{ Request::url() == request()->routeIs('dosen.*') ? 'active' : ''}} ">
+            <a href="{{ route('dosen.index') }}">
+                <i class='bx bxs-message-dots'></i>
+                <span class="text">Daftar Dosen</span>
+            </a>
+        </li>
+        <li class="{{ Request::url() == request()->routeIs('mahasiswa.*') ? 'active' : ''}} ">
+            <a href="{{ route('mahasiswa.index') }}">
+                <i class='bx bxs-message-dots'></i>
+                <span class="text">Template Surat</span>
+            </a>
+        </li>
         {{-- <li>
             <a href="#">
                 <i class='bx bxs-group'></i>

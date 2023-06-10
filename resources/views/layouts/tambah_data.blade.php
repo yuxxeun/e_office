@@ -2,12 +2,9 @@
 
 @extends('layouts.master')
 
-@section('title','E-Office - Tambah Daftar Mahasiswa')
-
-@section('title_content','Tambah Daftar Mahasiswa')
-
+@section('title','E-Office - Tambah Data')
+@section('title_content','Tambah Data')
 @section('main_content')
-
 <div class="table-data">
     <div class="order">
         <header>
