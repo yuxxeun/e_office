@@ -6,6 +6,12 @@ use App\Http\Controllers\NaskahController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\SuketKknController;
+use App\Http\Controllers\SuketMagangPklController;
+use App\Http\Controllers\SuketMahasiswaAktifController;
+use App\Http\Controllers\SuketObservasiMatkulController;
+use App\Http\Controllers\SuketPenelitianTugasAkhirController;
+use App\Http\Controllers\SuketTunjanganController;
 use App\Http\Controllers\SuratController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Health\Http\Controllers\HealthCheckResultsController;
@@ -28,13 +34,6 @@ Route::controller(NaskahController::class)
     ->prefix('naskah')
     ->group(function () {
         Route::get('/', 'naskah')->name('naskah.index');
-        Route::get('/suket-mahasisawa-aktif', 'suket_mhs_aktif')->name('naskah.aktif');
-        Route::get('/suket-tunjangan', 'suket_tunjangan')->name('naskah.tunjangan');
-        Route::get('/surat-izin-kkn', 'surat_izin_kkn')->name('naskah.kkn');
-        Route::get('/surat-izin-magang', 'surat_izin_magang')->name('naskah.magang');
-        Route::get('/surat-izin-penelitian', 'surat_izin_penelitian')->name('naskah.penelitian');
-        Route::get('/surat-izin-observasi-matkul', 'surat_izin_observasi_matkul')->name('naskah.observasimatkul');
-        Route::get('/surat_izin_observasi_TA', 'surat_izin_observasi_TA')->name('naskah.observasita');
     });
 
 // Mahasiswa route
@@ -58,18 +57,61 @@ Route::controller(SuratController::class)
     ->prefix('buat-surat')
     ->group(function () {
         Route::get('/', 'create')->name('buat-surat.create');
-        Route::get('/mahasiswa-aktif', 'mahasiswa_aktif')->name('buat-surat.mhsaktif');
-        Route::get('/tunjangan', 'tunjangan')->name('buat-surat.tunjangan');
-        Route::get('/kkn', 'kkn')->name('buat-surat.kkn');
-        Route::get('/magang', 'magang')->name('buat-surat.magang');
-        Route::get('/penelitian', 'penelitian')->name('buat-surat.peneliatian');
-        Route::get('/matkul', 'matkul')->name('buat-surat.matkul');
-        Route::get('/tugas-akhir', 'tugas_akhir')->name('buat-surat.tugasakhir');
     });
+
+// Route Suket Mahasiswa Aktif
+    Route::controller(SuketMahasiswaAktifController::class)
+    ->prefix('buat-surat')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/suket-mahasiswa-aktif', 'create')->name('suket.mahasiswaAktif');
+        Route::post('/suket-mahasiswa-aktif', 'store')->name('suket.mahasiswaAktifStore');
+    });
+
+    Route::controller(SuketTunjanganController::class)
+    ->prefix('buat-surat')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/suket-tunjangan', 'create')->name('suket.tunjangan');
+        Route::post('/suket-tunjangan', 'store')->name('suket.tunjanganStore');
+    });
+
+    Route::controller(SuketKknController::class)
+    ->prefix('buat-surat')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/suket-kkn', 'create')->name('suket.kkn');
+        Route::post('/suket-kkn', 'store')->name('suket.kknStore');
+    });
+
+    Route::controller(SuketMagangPklController::class)
+    ->prefix('buat-surat')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/suket-magang-pkl', 'create')->name('suket.magang');
+        Route::post('/suket-magang-pkl', 'store')->name('suket.magangStore');
+    });
+
+    Route::controller(SuketPenelitianTugasAkhirController::class)
+    ->prefix('buat-surat')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/suket-penelitian-tugas-akhir', 'create')->name('suket.penelitian');
+        Route::post('/suket-penelitian-tugas-akhir', 'store')->name('suket.penelitianStore');
+    });
+
+    Route::controller(SuketObservasiMatkulController::class)
+    ->prefix('buat-surat')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/suket-observasi-matkul', 'create')->name('suket.observasi');
+        Route::post('/suket-observasi-matkul', 'store')->name('suket.observasiStore');
+    });
+
 
 Route::get('surat', [SuratController::class, 'index'])->name('surat.index');
 
-// Riwayat route
+// Riwayat route 
 Route::controller(RiwayatController::class)->prefix('riwayat')->group(function () {
     Route::get('/', 'index')->name('riwayat.index');
 });
@@ -104,6 +146,10 @@ Route::controller(DosenController::class)
 
 // Health route
 Route::get('health', [HealthCheckResultsController::class, '__invoke']);
+
+// Route for testing PDF view
+Route::view('/pdf/mahasiswa', 'pdf.mahasiswa');
+Route::view('/pdf/suket-mahasiswa-aktif', 'pdf.suketMahasiswaAktif'); 
 
 Route::view('/adminpages', 'adminpages');
 Route::view('/content_form', 'contentform');

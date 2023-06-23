@@ -2,69 +2,109 @@
 @section('breadcrumb')
 <ul class="breadcrumb">
     <li>
-        <a href="{{ route('buat-surat.create') }}">Buat Surat</a>
+        <a href="{{ route('buat-surat.create') }}">Buat Surat Keterangan Tunjangan</a>
     </li>
     <li><i class='bx bx-chevron-right'></i></li>
     <li>
-        <a class="active" href="{{ route('buat-surat.tunjangan') }}">Surat Keterangan Tunjangan Orang Tua</a>
+        <a class="active" href="{{ route('suket.tunjanganStore') }}">Surat Keterangan Tunjangan Orang Tua</a>
     </li>
 </ul>
 @endsection
 
 @section('form_input')
-<div class="table-data">
-    <div class="order">
-        @section('title_surat', 'Keterangan Tunjungan Orang Tua')
-            <div class="form-group row">
-                <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
-                <div class="col-sm-10">
-                    <input type="nama" class="form-control" id="inputNama" placeholder="Nama">
+    <div class="table-data">
+        <div class="order">
+            @section('title_surat', 'Keterangan Tunjungan Orang Tua')
+            <form method="post" action="{{ route('suket.tunjanganStore') }}">
+                @csrf
+                <div class="form-group row">
+                    <label for="nomor_surat" class="col-sm-2 col-form-label">Nomor Surat</label>
+                    <div class="col-sm-10">
+                        <input id="nomor_surat" name="nomor_surat" type="text" value="{{ $number }}" class="form-control disabled">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputNim" class="col-sm-2 col-form-label">NIM</label>
-                <div class="col-sm-10">
-                    <input type="nim" class="form-control" id="inputNim" placeholder="NIM">
+                <div class="form-group row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Tanggal Surat</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="tanggal_surat" class="form-control" id="inputNama" placeholder="Nama">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputProdi" class="col-sm-2 col-form-label">Program Studi</label>
-                <div class="col-sm-10">
-                    <input type="prodi" class="form-control" id="inputProdi" placeholder="Program Studi">
+                <div class="form-group row">
+                    <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nama_mahasiswa" class="form-control" id="inputNama" placeholder="Nama">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputSemester" class="col-sm-2 col-form-label">Semester</label>
-                <div class="col-sm-10">
-                    <input type="semester" class="form-control" id="inputSemester" placeholder="Semester">
+                <div class="form-group row">
+                    <label for="inputNim" class="col-sm-2 col-form-label">NIM</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nim" class="form-control" id="inputNim" placeholder="NIM">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputCp" class="col-sm-2 col-form-label">Contact Person</label>
-                <div class="col-sm-10">
-                    <input type="cp" class="form-control" id="inputCp" placeholder="Contact Person">
+                <div class="form-group row">
+                    <label for="inputProdi" class="col-sm-2 col-form-label">Program Studi</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="prodi" class="form-control" id="inputProdi" placeholder="Program Studi">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
-                <div class="col-sm-10">
-                    <input type="alamat" class="form-control" id="inputAlamat" placeholder="Alamat">
+                <div class="form-group row">
+                    <label for="inputSemester" class="col-sm-2 col-form-label">Semester</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="semester" class="form-control" id="inputSemester" placeholder="Semester">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputKeperluan" class="col-sm-2 col-form-label">Keperluan</label>
-                <div class="col-sm-10">
-                    <input type="keperluan" class="form-control" id="inputKeperluan" placeholder="Keperluan">
+                <div class="form-group row">
+                    <label for="inputCp" class="col-sm-2 col-form-label">Contact Person</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="contact_person" class="form-control" id="inputCp" placeholder="Contact Person">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-10">
-                    <button type="submit" class="isian">
-                        Submit
-                    </button>
+                <div class="form-group row">
+                    <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="alamat" class="form-control" id="inputAlamat" placeholder="Alamat">
+                    </div>
                 </div>
-            </div>
+                <div class="form-group row">
+                    <label for="inputKeperluan" class="col-sm-2 col-form-label">Keperluan</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="keperluan" class="form-control" id="inputKeperluan" placeholder="Keperluan">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputKeperluan" class="col-sm-2 col-form-label">Nama orang Tua</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nama_ortu" class="form-control" id="inputKeperluan" placeholder="Keperluan">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputKeperluan" class="col-sm-2 col-form-label">NIP</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="nip" class="form-control" id="inputKeperluan" placeholder="Keperluan">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputKeperluan" class="col-sm-2 col-form-label">Pangkat/Golongan</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="pangkat_golongan" class="form-control" id="inputKeperluan" placeholder="Keperluan">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputKeperluan" class="col-sm-2 col-form-label">Jabatan</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="jabatan" class="form-control" id="inputKeperluan" placeholder="Keperluan">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputKeperluan" class="col-sm-2 col-form-label">Instansi</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="instansi" class="form-control" id="inputKeperluan" placeholder="Keperluan">
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 @endsection

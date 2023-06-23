@@ -48,7 +48,6 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
-
         return view('mahasiswa.edit_daftar_mahasiswa', compact('mahasiswa'));
     }
 
@@ -72,14 +71,13 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
 
         Alert::success('Berhasil 🎉🥳', 'Berhasil menghapus data mahasiswa');
-
         return redirect()->route('mahasiswa.index');
     }
 
     public function exportpdf()
     {
         $datas = Mahasiswa::all();
-        $pdf = Pdf::loadView('mahasiswa.pdf', ['datas' => $datas]);
+        $pdf = Pdf::loadView('pdf.mahasiswa', ['datas' => $datas]);
 
         return $pdf->download('Data Mahsaiswa -'.Carbon::now()->format('Y-m-d').'.pdf');
     }

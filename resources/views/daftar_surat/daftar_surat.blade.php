@@ -42,26 +42,15 @@
                     </thead>
                     <tbody>
                         <tr class="odd">
-                            <td class="dtr-control">Trident</td>
-                            <td>Internet
-                                Explorer 4.0
-                            </td>
-                            <td>Win 95+</td>
-                            <td class="sorting_1"> 4</td>
-                            <td>X</td>
-                            <td>Dyahayu</td>
-                            <td>Aksi</td>
-                        </tr>
-                        <tr class="even">
-                            <td class="dtr-control">Trident</td>
-                            <td>Internet
-                                Explorer 4.0
-                            </td>
-                            <td>Win 95+</td>
-                            <td class="sorting_1"> 4</td>
-                            <td>X</td>
-                            <td>Dyahayu</td>
-                            <td>Aksi</td>
+                            @foreach ($datas as $mahasiswaAktif)
+                                <td class="dtr-control">{{ $mahasiswaAktif->id }}</td>
+                                <td class="dtr-control">{{ $mahasiswaAktif->id }}</td>
+                                <td>Keterangan Mahasiswa Aktif</td>
+                                <td class="sorting_1">{{ $mahasiswaAktif->nomor_surat }}</td>
+                                <td>{{ $mahasiswaAktif->tanggal_surat }}</td>
+                                <td>{{ $mahasiswaAktif->nama_mahasiswa }}</td>
+                                <td>Engga ada, mager</td>
+                            @endforeach
                         </tr>
                     </tbody>
                 </table>

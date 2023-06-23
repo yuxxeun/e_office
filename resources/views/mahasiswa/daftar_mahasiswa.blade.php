@@ -90,14 +90,11 @@
                                     </button>
                                 </form>
                             </td>
-
                         </tr>
                     </tbody>
                 @endforeach
             </table>
-            <div class="d-flex justify-contetn-center mt-5 justify-end">
-                {{ $mahasiswa->links() }}
-            </div>
+            {{ $mahasiswa->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>
 @endsection

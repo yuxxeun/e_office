@@ -16,28 +16,28 @@
 <div class="container">
     <div class="box-container">
         <div class="box">
-            <a href="{{ route('buat-surat.mhsaktif') }}">
+            <a href="{{ route('suket.mahasiswaAktif') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Keterangan Mahasiswa Aktif</p>
             </a>
         </div>
         <div class="box">
-            <a href="{{ route('buat-surat.tunjangan') }}">
+            <a href="{{ route('suket.tunjangan') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Keterangan Tunjangan Anak pada Gaji Orang Tua</p>
             </a>
         </div>
         <div class="box">
-            <a href="{{ route('buat-surat.kkn') }}">
+            <a href="{{ route('suket.kkn') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Magang KKN Tematik</p>
             </a>
         </div>
         <div class="box">
-            <a href="{{ route('buat-surat.magang') }}">
+            <a href="{{ route('suket.magang') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Magang/PKL</p>
@@ -45,24 +45,17 @@
         </div>
 
         <div class="box">
-            <a href="{{ route('buat-surat.peneliatian') }}">
+            <a href="{{ route('suket.penelitian') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
                 <p>Surat Izin Penelitian Tugas Akhir</p>
             </a>
         </div>
         <div class="box">
-            <a href="{{ route('buat-surat.matkul') }}">
+            <a href="{{ route('suket.observasi') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
-                <p>Surat Izin Observasi Mata Kuliah</p>
-            </a>
-        </div>
-        <div class="box">
-            <a href="{{ route('buat-surat.tugasakhir') }}">
-                <img src="{{asset('')}}/surat.png">
-                <h3></h3>
-                <p>Surat Izin Observasi Tugas Akhir</p>
+                <p>Surat Izin Observasi Mata Kuliah / Tugas Akhir</p>
             </a>
         </div>
     </div>

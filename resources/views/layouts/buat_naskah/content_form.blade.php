@@ -10,7 +10,6 @@
                 <header>
                     Surat @yield('title_surat')<br>
                 </header>
-                <span>Nomor.</span>
             </div>
             @yield('form_input')
         </div>
