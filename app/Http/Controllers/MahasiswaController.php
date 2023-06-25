@@ -35,7 +35,7 @@ class MahasiswaController extends Controller
         $mahasiswa->j_kel = $request->j_kel;
         $mahasiswa->save();
 
-        return redirect()->route('mahasiswa.index');
+        return redirect()->route('mahasiswa.index')->with('success', 'Berhasil menambahkan data mahasiswa!');
     }
 
     public function show($id)

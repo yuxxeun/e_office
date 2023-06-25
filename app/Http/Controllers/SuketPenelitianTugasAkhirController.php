@@ -15,7 +15,7 @@ class SuketPenelitianTugasAkhirController extends Controller
         $tanggalsurat = Carbon::now()->format('d-m-Y');;
         $number = $kodesurat . mt_rand(1000000, 9999999) . '/' . $tanggalsurat;
         $mahasiswas = Mahasiswa::get();
-        return view('surat.surat_izin_observasi_TA', ['number' => $number, 'mahasiswas' => $mahasiswas]);
+        return view('surat.surat_izin_penelitian', ['number' => $number, 'mahasiswas' => $mahasiswas]);
     }
 
     public function store(Request $request)

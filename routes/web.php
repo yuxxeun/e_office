@@ -10,6 +10,7 @@ use App\Http\Controllers\SuketKknController;
 use App\Http\Controllers\SuketMagangPklController;
 use App\Http\Controllers\SuketMahasiswaAktifController;
 use App\Http\Controllers\SuketObservasiMatkulController;
+use App\Http\Controllers\SuketObservasiTugasAkhirController;
 use App\Http\Controllers\SuketPenelitianTugasAkhirController;
 use App\Http\Controllers\SuketTunjanganController;
 use App\Http\Controllers\SuratController;
@@ -106,6 +107,14 @@ Route::controller(SuratController::class)
     ->group(function () {
         Route::get('/suket-observasi-matkul', 'create')->name('suket.observasi');
         Route::post('/suket-observasi-matkul', 'store')->name('suket.observasiStore');
+    });
+
+    Route::controller(SuketObservasiTugasAkhirController::class)
+    ->prefix('buat-surat')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/suket-observasi-tugas-akhir', 'create')->name('suket.ta');
+        Route::post('/suket-observasi-tugas-akhir', 'store')->name('suket.taStore');
     });
 
 

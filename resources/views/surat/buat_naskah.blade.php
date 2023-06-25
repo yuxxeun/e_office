@@ -55,7 +55,14 @@
             <a href="{{ route('suket.observasi') }}">
                 <img src="{{asset('')}}/surat.png">
                 <h3></h3>
-                <p>Surat Izin Observasi Mata Kuliah / Tugas Akhir</p>
+                <p>Surat Izin Observasi Mata Kuliah</p>
+            </a>
+        </div>
+        <div class="box">
+            <a href="{{ route('suket.ta') }}">
+                <img src="{{asset('')}}/surat.png">
+                <h3></h3>
+                <p>Surat Izin Observasi Tugas Akhir</p>
             </a>
         </div>
     </div>

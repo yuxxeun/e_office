@@ -11,7 +11,7 @@
         <i class='bx bx-chevron-right'></i>
     </li>
     <li>
-        <a class="active" href="{{ route('suket.penelitian') }}">Surat Keterangan Tunjangan Orang Tua</a>
+        <a class="active" href="{{ route('suket.ta') }}">Surat Keterangan Tunjangan Orang Tua</a>
     </li>
     </ul>
 @endsection
@@ -19,7 +19,7 @@
 <div class="table-data">
     <div class="order">
     @section('title_surat', 'Surat Keterangan Observasi Mata Kuliah')
-    <form action="{{ route('suket.penelitianStore') }}" class="form" method="post">
+    <form action="{{ route('suket.taStore') }}" class="form" method="post">
         @csrf
         <div class="input-box">
             <label>Nomor Surat</label>
@@ -90,8 +90,8 @@
         </div>
 
         <div class="input-box">
-            <label>Judul Tugas Akhir</label>
-            <input type="text" name="judul_tugas_akhir" required />
+            <label>Mata Kuliah</label>
+            <input type="text" name="mata_kuliah" required />
         </div>
 
         <div class="input-box">
