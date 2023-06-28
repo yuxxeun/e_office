@@ -50,6 +50,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Mckenziearts\Notify\LaravelNotifyServiceProvider::class
     ],
 
     'aliases' => Facade::defaultAliases()->merge([

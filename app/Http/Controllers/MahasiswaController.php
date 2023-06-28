@@ -13,11 +13,10 @@ class MahasiswaController extends Controller
     public function index(Request $request)
     {
         if ($request->keyword) {
-            $mahasiswa = Mahasiswa::search($request->keyword)->paginate(10);
+            $mahasiswa = Mahasiswa::search($request->keyword)->paginate(5);
         } else {
-            $mahasiswa = Mahasiswa::paginate(10);
+            $mahasiswa = Mahasiswa::paginate(5);
         }
-
         return view('mahasiswa.daftar_mahasiswa')->with('mahasiswa', $mahasiswa);
     }
 
@@ -35,7 +34,8 @@ class MahasiswaController extends Controller
         $mahasiswa->j_kel = $request->j_kel;
         $mahasiswa->save();
 
-        return redirect()->route('mahasiswa.index')->with('success', 'Berhasil menambahkan data mahasiswa!');
+        notify()->success('success', 'Berhasil menambah data mahasiswa');
+        return redirect()->route('mahasiswa.index');
     }
 
     public function show($id)
@@ -70,7 +70,7 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::findOrfail($id);
         $mahasiswa->delete();
 
-        Alert::success('Berhasil 🎉🥳', 'Berhasil menghapus data mahasiswa');
+        notify()->success('success', 'Berhasil menghapus data mahasiswa');
         return redirect()->route('mahasiswa.index');
     }
 

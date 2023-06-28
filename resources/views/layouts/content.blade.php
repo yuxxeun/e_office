@@ -1,5 +1,5 @@
 <section id="content">
-    <nav>
+    <nav class="z-index mb-5">
         <i class='bx bx-menu'></i>
         <form action="#"></form>
         <a href="#" class="notification">
@@ -40,5 +40,7 @@
             </div>
         </div>
         @yield('main_content')
+        @notifyCss
+        @notifyJs
     </main>
 </section>

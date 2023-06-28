@@ -1,11 +1,7 @@
 <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-
 @extends('layouts.master')
-
 @section('title', 'E-Office - Daftar Mahasiswa')
-
 @section('title_content', 'Daftar Mahasiswa')
-
 @section('breadcrumb')
     <ul class="breadcrumb">
         <li>
@@ -19,7 +15,6 @@
         @endif
     </ul>
 @endsection
-
 @section('main_content')
     <div class="table-data">
         <div class="order">
@@ -41,6 +36,7 @@
                         Export to pdf
                     </a>
             </div>
+            @include('notify::components.notify')
             <div class="head">
                 <button class="add">
                     <a href="{{ route('mahasiswa.create') }}" style="color: inherit">
@@ -52,6 +48,7 @@
             <table>
                 <thead class="items-center mx-auto justify-center content-center">
                     <tr>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>NIM</th>
                         <th>Program Studi</th>
@@ -59,10 +56,10 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-
-                @foreach ($mahasiswa as $mhs)
+                @foreach ($mahasiswa as $index=> $mhs)
                     <tbody>
                         <tr>
+                            <td>{{ $index + $mahasiswa->firstItem() }}</td>
                             <td>{{ $mhs->nama }}</td>
                             <td>{{ $mhs->nim }}</td>
                             <td>{{ $mhs->prodi }}</td>
